@@ -2,19 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Fetch exercise</title>
 </head>
 <body>
   <img src="#">
   <script>
-    const img = document.querySelector('img');
-      fetch('https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=Sexy', {mode: 'cors'})
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(response) {
-					img.src = response.data.images.original.url;
-        });
+		// fetchexercise();
+
+		// function fetchexercise (){
+		// 	clean();			
+			const img = document.querySelector('img');
+			img.style.maxHeight = '250px';
+
+				fetch('https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=Sexy', {mode: 'cors'})
+					.then(function(response) {
+							return response.json();
+					})
+					.then(function(response) {
+						img.src = response.data.images.original.url;
+					});
+				
 
 				var container0 = document.createElement('div'); 
 				container0.style.width = '100vw';
@@ -53,12 +60,31 @@
 				victoria.style.fontWeight = 'bold'
 				victoria.style.marginTop = '20px';
 
+				var buttonn = document.createElement('button')
+				buttonn.textContent = 'Refresh';
+				buttonn.style.fontSize = '32px'
+				buttonn.style.fontWeight = 'bold'
+				buttonn.style.marginTop = '20px';
+				buttonn.style.cursor = "pointer";
+  			buttonn.addEventListener('click', clean); // this one lets no form display it
+
 				container.appendChild(img);
+				//container0.appendChild(img);
 				container0.appendChild(container);
 				container0.appendChild(victoria);
+				container0.appendChild(buttonn);
 				document.body.appendChild(container0);
-				
 
+
+		function clean (){
+		// 	while (document.body.lastChild) { //this one clean-remove to start again
+    // 		document.body.removeChild(document.body.lastChild);
+    // 		//console.log('eraser');
+  	// 	}	
+			window.location.reload();
+		}
+		
+//			}
   </script>
 </body>
 </html>
