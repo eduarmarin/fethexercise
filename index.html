@@ -7,10 +7,11 @@
 <body>
   <img src="#">
   <script>
+			clear();
 			const img = document.querySelector('img');
 			img.style.maxHeight = '250px';
-
-				fetch('https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=Sexy', {mode: 'cors'})
+				var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=car';	
+				fetch(data1, {mode: 'cors'})
 					.then(function(response) {
 							return response.json();
 					})
@@ -49,6 +50,9 @@
 				victoria.style.fontSize = '32px'
 				victoria.style.fontWeight = 'bold'
 				victoria.style.marginTop = '20px';
+				victoria.style.cursor = "pointer";
+  			victoria.contentEditable = "true";
+				victoria.id = 'victoria';
 
 				var buttonn = document.createElement('button')
 				buttonn.textContent = 'Refresh';
@@ -65,7 +69,9 @@
 				document.body.appendChild(container0);
 
 		function clear(){
-			window.location.reload();
+			let tittle = document.getElementById('victoria').value;
+			console.log(tittle);
+//			window.location.reload();
 		}
   </script>
 </body>
