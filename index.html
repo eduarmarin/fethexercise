@@ -7,70 +7,97 @@
 <body>
   <img src="#">
   <script>
-			clear();
+		var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=';
+		var datain = 'bike';
+		var data1 = data1.concat(datain);
+		//data1 =  "'" + data1 + "'";
+		console.log('data1: ' + data1);
+		// var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=bike';
+		// console.log('data1: ' + data1);
+		fetchfunction(data1);
+
+		function fetchfunction (data){
 			const img = document.querySelector('img');
 			img.style.maxHeight = '250px';
-				var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=car';	
-				fetch(data1, {mode: 'cors'})
-					.then(function(response) {
-							return response.json();
+
+			fetch(data, {
+						method: "GET", 
+            //body: JSON.stringify(data),
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            }
 					})
-					.then(function(response) {
-						img.src = response.data.images.original.url;
-					});
+				.then(function(response) {
+						return response.json();
+				})
+				.then(function(response) {
+					img.src = response.data.images.original.url;
+				});
 
-				var container0 = document.createElement('div'); 
-				container0.style.width = '100vw';
-				container0.style.height = '100vh';
-				container0.style.display = 'flex';
-				container0.style.justifyContent = 'center';
-				container0.style.alignItems = 'center';
-				container0.style.flexDirection =  'column';
-				container0.style.backgroundImage = "url('disguise-1296221_640.png')";
-				container0.style.backgroundSize = '150px';
-				container0.style.backgroundRepeat = ('repeat');
-				container0.style.color = 'gold';
-				container0.style.background = 'rgba(225, 0, 0, .1)';
+			var container0 = document.createElement('div'); 
+			container0.style.width = '100vw';
+			container0.style.height = '100vh';
+			container0.style.display = 'flex';
+			container0.style.justifyContent = 'center';
+			container0.style.alignItems = 'center';
+			container0.style.flexDirection =  'column';
+			container0.style.backgroundImage = "url('disguise-1296221_640.png')";
+			container0.style.backgroundSize = '150px';
+			container0.style.backgroundRepeat = ('repeat');
+			container0.style.color = 'gold';
+			container0.style.background = 'rgba(225, 0, 0, .1)';
 
-				var container = document.createElement('div'); 
-				container.style.display = 'flex';
-				container.style.justifyContent = 'center';
-				container.style.alignItems = 'center';
-				container.style.flexDirection =  'column';
-				container.style.border = '2px';
-				container.style.borderStyle = 'solid';
-        container.style.borderRadius = '4px';
-        //container.style.borderColor = 'lightred';
-				container.style.width = 'auto';
-        container.style.height = 'auto';
-				//container.style.marginTop = '20px';
+			var container = document.createElement('div'); 
+			container.style.display = 'flex';
+			container.style.justifyContent = 'center';
+			container.style.alignItems = 'center';
+			container.style.flexDirection =  'column';
+			container.style.border = '2px';
+			container.style.borderStyle = 'solid';
+			container.style.borderRadius = '4px';
+			//container.style.borderColor = 'lightred';
+			container.style.width = 'auto';
+			container.style.height = 'auto';
+			//container.style.marginTop = '20px';
 
-				var victoria = document.createElement('p'); 
-				victoria.textContent = 'Baby';
-				victoria.style.fontSize = '32px'
-				victoria.style.fontWeight = 'bold'
-				victoria.style.marginTop = '20px';
-				victoria.style.cursor = "pointer";
-  			victoria.contentEditable = "true";
-				victoria.id = 'victoria';
+			var victoria = document.createElement('p'); 
+			victoria.textContent = 'bike';
+			victoria.style.fontSize = '32px'
+			victoria.style.fontWeight = 'bold'
+			victoria.style.marginTop = '20px';
+			victoria.style.cursor = "pointer";
+			victoria.contentEditable = "true";
+			victoria.id = 'victoria';
+			victoria.style.border = '2px';
+			victoria.style.borderStyle = 'solid';
+			victoria.style.borderRadius = '4px';
+			victoria.style.borderColor = 'black';
+			victoria.style.padding = '4px';
+			victoria.style.backgroundColor = 'gray';
 
-				var buttonn = document.createElement('button')
-				buttonn.textContent = 'Refresh';
-				buttonn.style.fontSize = '32px'
-				buttonn.style.fontWeight = 'bold'
-				buttonn.style.marginTop = '20px';
-				buttonn.style.cursor = "pointer";
-  			buttonn.addEventListener('click', clear); // this one lets no form display it
+			var buttonn = document.createElement('button')
+			buttonn.textContent = 'Refresh';
+			buttonn.style.fontSize = '32px'
+			buttonn.style.fontWeight = 'bold'
+			buttonn.style.marginTop = '20px';
+			buttonn.style.cursor = "pointer";
+			buttonn.addEventListener('click', clear);
 
-				container.appendChild(img);
-				container0.appendChild(container);
-				container0.appendChild(victoria);
-				container0.appendChild(buttonn);
-				document.body.appendChild(container0);
-
+			container.appendChild(img);
+			container0.appendChild(container);
+			container0.appendChild(victoria);
+			container0.appendChild(buttonn);
+			document.body.appendChild(container0);
+    }
 		function clear(){
-			let tittle = document.getElementById('victoria').value;
-			console.log(tittle);
+				let tittle = document.getElementById('victoria').innerHTML;
+				var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=';	
+				var data2 = data1.concat(tittle);
+				//data2 =  "'" + data2 + "'";
+				//data2 = data2.toString();
+				console.log('data2: ' + data2);
+				fetchfunction(data2);
 //			window.location.reload();
 		}
   </script>
