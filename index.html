@@ -92,13 +92,14 @@
     }
 		function clear(){
 				let tittle = document.getElementById('victoria').innerHTML;
+				console.log('tittle: ' + tittle);
 				var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=';	
 				var data2 = data1.concat(tittle);
 				//data2 =  "'" + data2 + "'";
 				//data2 = data2.toString();
 				console.log('data2: ' + data2);
 				fetchfunction(data2);
-//			window.location.reload();
+				//window.location.reload();
 		}
   </script>
 </body>
