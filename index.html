@@ -8,16 +8,18 @@
   <img src="#">
   <script>
 		var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=';
-		var datain = 'bike';
+		var datain = 'sun';
 		var data1 = data1.concat(datain);
 		//data1 =  "'" + data1 + "'";
 		console.log('data1: ' + data1);
 		// var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=bike';
 		// console.log('data1: ' + data1);
-		fetchfunction(data1);
+		fetchfunction(data1, datain);
 
-		function fetchfunction (data){
-			const img = document.querySelector('img');
+		function fetchfunction (data, data3){
+
+			//const img = document.querySelector('img');
+			const img = document.createElement('img');
 			img.style.maxHeight = '250px';
 
 			fetch(data, {
@@ -47,6 +49,7 @@
 			container0.style.backgroundRepeat = ('repeat');
 			container0.style.color = 'gold';
 			container0.style.background = 'rgba(225, 0, 0, .1)';
+			container0.id = 'container0';
 
 			var container = document.createElement('div'); 
 			container.style.display = 'flex';
@@ -62,7 +65,7 @@
 			//container.style.marginTop = '20px';
 
 			var victoria = document.createElement('p'); 
-			victoria.textContent = 'bike';
+			victoria.textContent = data3;
 			victoria.style.fontSize = '32px'
 			victoria.style.fontWeight = 'bold'
 			victoria.style.marginTop = '20px';
@@ -92,13 +95,21 @@
     }
 		function clear(){
 				let tittle = document.getElementById('victoria').innerHTML;
+				
+				var container0 = document.getElementById('container0');
+				var container0 = document.body;
+				while (container0.lastChild) { //this one clean  body
+				container0.removeChild(container0.firstChild);
+    		console.log('eraser');
+  		}
+
 				console.log('tittle: ' + tittle);
 				var data1 = 'https://api.giphy.com/v1/gifs/translate?api_key=sYKsjYShrIIPtacYd8jEUtD0yGiIwgbI&s=';	
 				var data2 = data1.concat(tittle);
 				//data2 =  "'" + data2 + "'";
 				//data2 = data2.toString();
 				console.log('data2: ' + data2);
-				fetchfunction(data2);
+				fetchfunction(data2, tittle);
 				//window.location.reload();
 		}
   </script>
